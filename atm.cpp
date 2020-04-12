@@ -8,58 +8,77 @@
 
 using namespace std;
 
-// Menu method 
+// Menu method
 // Int means there will be a returned integer value
-void menu() {
+void menu()
+{
     // \ is independent for c and is responsible for formatting within a string. \n is a new line character
-    cout <<"1. Sign In \n2. Balance \n3. Deposit \n4. Withdraw \n5. Exit \n" <<endl;
+    cout << "1. Sign In \n2. Balance \n3. Deposit \n4. Withdraw \n5. Exit \n"
+         << endl;
 }
 // Signin method
-void signin() {
-    
+void signin()
+{
 }
 // Balance method
-void balance() {
-
+void balance()
+{
 }
 // Deposit method
-void deposit() {
-
+void deposit()
+{
 }
 // Withdraw method
-void withdraw() {
-
+void withdraw()
+{
 }
 // Exit method
-void exit() {
-
+void exitATM()
+{
+     cout <<"Good day to you good sir or madam! Enjoy your cash."<< endl;
 }
-int main() {
+int main()
+{
     // Array of balances with 1000.00 starting balance
     double balance[10] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
-    // Array of accounts of ten menbers
-    int account[10] = { 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010 };
-    // Loop for menu
-    bool resume = true;
-    // While loop that Continues while resume is true
-    while(resume){
+    // Account number valid values are between 0-9, which is the indexing for array
+    int accountNumber;
+    // User input for account number
+    int userInput;
+    //  what user enters for their menu selection  
+    int menuInput;
+     // While loop that Continues while resume is true
+    while (true)
+    {
         menu();
+        cin >> userInput;
+        if (userInput == 1)
+        {
+            cout << "Please enter your account number.";
+            cin >> menuInput;
+            // While loop for checking invalid account numbers. If someone inputs something less than 0 or greater than nine, an error message will appear.
+            while (menuInput < 0 || menuInput > 9) {
+                cout << "Invalid account number! Please enter a valid account number good sir or madam."<< endl;
+                cin >> menuInput; 
+            }
+        } else if (userInput == 5) {
+            exitATM(); 
+            userInput = 0;
+        }
     }
-
-
 }
 
-// (b)	We assume that this ATM machine holds account for only 10 people. So, use an array to store client’s account balance. Suppose all accounts start with an initial balance of $1000. With this structure in mind we use array indices (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) as user’s account number (a single digit) and array values as balances.  The user must first sign in to use the machine by entering their account number (0, 1, 2, 3,.. 9). 
+// (b)	We assume that this ATM machine holds account for only 10 people. So, use an array to store client’s account balance. Suppose all accounts start with an initial balance of $1000. With this structure in mind we use array indices (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) as user’s account number (a single digit) and array values as balances.  The user must first sign in to use the machine by entering their account number (0, 1, 2, 3,.. 9).
 // If the user enters an incorrect account number the system should give a warning message and display the menu again.
 
-// (c)	User can request account Balance by entering option 2. Write a function to complete the following task: 
+// (c)	User can request account Balance by entering option 2. Write a function to complete the following task:
 // •	The system displays the current balance.
 // •	If balance is below $100, the system should display the message “Low Balance”.
 // •	Then go back to the top menu.
 
 // (d)	If option menu 3, which is Deposit is selected, write a function to compete the task:
-// •	the system should prompt the user to enter the amount. The ATM machine validates the input by verifying that the input is positive. 
-// •	If not a warning message is displayed “invalid amount”, and the user is prompted to try again, if amount is negative again, the deposit operation is terminated and the top menu is displayed again.  
+// •	the system should prompt the user to enter the amount. The ATM machine validates the input by verifying that the input is positive.
+// •	If not a warning message is displayed “invalid amount”, and the user is prompted to try again, if amount is negative again, the deposit operation is terminated and the top menu is displayed again.
 // •	If amount is positive the Balance is updated.
 
 /* 

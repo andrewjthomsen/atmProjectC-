@@ -23,12 +23,17 @@ void balance(int account, double balances[10])
     cout << "Your balance is " << balances[account] << endl;
 }
 // Deposit method
-void deposit()
+void deposit(double amount, double balances[10], int account)
 {
+    // There are two ways to achieve achieve the sum of the balance plus the amount
+    // Other way: balances[account] = balances[account] + amount
+    // The method chosen simply saves typin time
+    balances[account] += amount;
 }
 // Withdraw method
-void withdraw()
+void withdraw(double amount, double balances[10], int account)
 {
+    balances[account] -= amount;
 }
 // Exit method
 void exitATM()
@@ -67,12 +72,32 @@ int main()
         }
         else if (userInput == 3)
         {
-           cout << "Please enter your deposite amount.";
-           cin >> amount;
+            cout << "Please enter your deposite amount.";
+            cin >> amount;
+            if (amount < 0)
+            {
+                cout << "Error! Invalid amount has been entered. Please try again!" << endl;
+                cin >> amount;
+            }
+            if (amount > 0)
+            {
+                // Deposite takes in amount, balances, and acoountNumber to update the balance for that user
+                deposit(amount, balances, accountNumber);
+            }
         }
         else if (userInput == 4)
         {
-           
+            cout << "Please be so kind as to enter your withdrawl amount.";
+            cin >> amount;
+            if (amount > balances[accountNumber])
+            {
+                cout << "Error! The amount entered exceeds available balance. Please enter a valid withdrawl amount!";
+                cin >> amount;
+            }
+            if (amount <= balances[accountNumber])
+            {
+                withdraw(amount, balances, accountNumber);
+            }
         }
 
         else if (userInput == 5)

@@ -17,9 +17,10 @@ void menu()
          << endl;
 }
 // Balance method takes in account and balance array for accessing and printing balance
-void balance(int account, double balance[10])
+void balance(int account, double balances[10])
 {
-
+    // The name of the parameter doesn't matter, which is why account works here...
+    cout << "Your balance is " << balances[account] << endl;
 }
 // Deposit method
 void deposit()
@@ -37,13 +38,13 @@ void exitATM()
 int main()
 {
     // Array of balances with 1000.00 starting balance
-    double balance[10] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
+    double balances[10] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
     // Account number valid values are between 0-9, which is the indexing for array
     int accountNumber;
     // User input for account number
     int userInput;
-    //  what user enters for their menu selection
-    int menuInput;
+    //  Amount variable holds onto value for withdrawls and deposits
+    double amount;
     // While loop that Continues while resume is true
     while (true)
     {
@@ -62,7 +63,16 @@ int main()
         }
         else if (userInput == 2)
         {
-            balance(accountNumber, balance);
+            balance(accountNumber, balances);
+        }
+        else if (userInput == 3)
+        {
+           cout << "Please enter your deposite amount.";
+           cin >> amount;
+        }
+        else if (userInput == 4)
+        {
+           
         }
 
         else if (userInput == 5)

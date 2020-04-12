@@ -16,13 +16,10 @@ void menu()
     cout << "1. Sign In \n2. Balance \n3. Deposit \n4. Withdraw \n5. Exit \n"
          << endl;
 }
-// Signin method
-void signin()
+// Balance method takes in account and balance array for accessing and printing balance
+void balance(int account, double balance[10])
 {
-}
-// Balance method
-void balance()
-{
+
 }
 // Deposit method
 void deposit()
@@ -35,7 +32,7 @@ void withdraw()
 // Exit method
 void exitATM()
 {
-     cout <<"Good day to you good sir or madam! Enjoy your cash."<< endl;
+    cout << "Good day to you good sir or madam! Enjoy your cash." << endl;
 }
 int main()
 {
@@ -45,9 +42,9 @@ int main()
     int accountNumber;
     // User input for account number
     int userInput;
-    //  what user enters for their menu selection  
+    //  what user enters for their menu selection
     int menuInput;
-     // While loop that Continues while resume is true
+    // While loop that Continues while resume is true
     while (true)
     {
         menu();
@@ -55,14 +52,22 @@ int main()
         if (userInput == 1)
         {
             cout << "Please enter your account number.";
-            cin >> menuInput;
+            cin >> accountNumber;
             // While loop for checking invalid account numbers. If someone inputs something less than 0 or greater than nine, an error message will appear.
-            while (menuInput < 0 || menuInput > 9) {
-                cout << "Invalid account number! Please enter a valid account number good sir or madam."<< endl;
-                cin >> menuInput; 
+            while (accountNumber < 0 || accountNumber > 9)
+            {
+                cout << "Invalid account number! Please enter a valid account number good sir or madam." << endl;
+                cin >> accountNumber;
             }
-        } else if (userInput == 5) {
-            exitATM(); 
+        }
+        else if (userInput == 2)
+        {
+            balance(accountNumber, balance);
+        }
+
+        else if (userInput == 5)
+        {
+            exitATM();
             userInput = 0;
         }
     }
